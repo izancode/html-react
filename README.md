@@ -95,5 +95,3 @@ Parcel is a Beast
 "build":"parcel build index.html", (Build Mode - project will be build in one folder normal html css file) - npm run build
 "test": " jest"
 },
-
-hello i m pro branch
