@@ -1,15 +1,5 @@
-/*
-const heading = React.createElement(
-  "h1",
-  { id: "heading", xyz: "abc" },
-  "Hello World from React!"
-);
-console.log(heading);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
-
-React Element is an object and react object will become html that the browser understand
-*/
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
