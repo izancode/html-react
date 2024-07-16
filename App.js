@@ -1,12 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-/* JSX - is not HTML in JS but its html or xml like syntax
-JSX transpiled before it reaches the JS - parcel - Babel
-
-JSX converted to React.createElement and this converted to ReactElement(object) and this converted to html element
-*/
-
+//React Element
 const jsxHeading = (
   <h1 className="head" tabIndex="1">
     hello my name is faizan Jsx
@@ -14,6 +9,26 @@ const jsxHeading = (
 );
 console.log(jsxHeading);
 
+/*
+# React Components
+
+Two Types of Components in React
+1.Class Based Components - old way to writting code
+2.Functional Based Components - new way writting code
+
+*/
+
+//React Functional Components
+
+const HeadingComponents = () => {
+  return <h1>izancode React Functional component</h1>;
+};
+
+const HeadingComponents2 = () => (
+  <div id="container">
+    <h1>izancode React Functional component test</h1>;
+  </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
-console.log(root);
+root.render(<HeadingComponents2 />);
