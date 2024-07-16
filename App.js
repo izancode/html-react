@@ -1,14 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "hello my name is faizan React"
-);
-
-console.log(heading);
-
 /* JSX - is not HTML in JS but its html or xml like syntax
 JSX transpiled before it reaches the JS - parcel - Babel
 
