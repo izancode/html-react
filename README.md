@@ -97,3 +97,22 @@ Parcel is a Beast
 "build":"parcel build index.html", (Build Mode - project will be build in one folder normal html css file) - npm run build
 "test": " jest"
 },
+
+# React Project Plaining
+
+izanFood
+--Component--
+Header Component
+-logo
+-Nav Item
+Body Component
+-search
+-Resturant Container
+--Resturant Card
+---Img
+---Name od res, Star Rating, Cuisines, delivery time
+Footer Component
+-Copy Right
+-Links
+-Address
+-contact
