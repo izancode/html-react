@@ -1,4 +1,4 @@
-# This Food delivery app - 2 Branch Here Only
+# This Food Delivery App - part 2 Branch Here Only
 
 # Javascript Code
 
@@ -116,3 +116,89 @@ Footer Component
 -Links
 -Address
 -contact
+
+# Two Types of Export/Import
+
+-Deafult Export/Import
+ex:
+export default Components
+import Component from "path"
+
+-Named Export/Import
+ex:
+export const Component/variable = "something";
+import {Component/variable} from "path";
+
+# React Hooks
+
+(Normal JS utility function)
+-Two very Impotant Hooks
+-useState()
+Superpowerful State Varibles in react
+Whenever a state varible update react re-render my component
+-useEffect()
+
+# React Works Behind the scence by using
+
+Reconciliation Algorithm React 16 after its name ->(React Fiber)
+
+one div have 7 div inner and in some cases after onclick we have render only 3 div
+
+Virtaul DOM is representation of an actual dom
+
+actual dom
+
+<div>
+ <div>
+  <img>
+
+Virtaul dom is React Object
+
+Diff Algorithm
+Diff Algorithm find out the difference between the two virtual dom "Updated Virtaul Dom" and "Previous Virtaul DOM"
+
+Old/Previous Virtaul DOM
+
+<div>
+  <div 1></div>
+  <div 2></div>
+  <div 3></div>
+  <div 4></div>
+  <div 5></div>
+  <div 6></div>
+  <div 7></div>
+</div>
+
+=>After OnClick Button
+
+New/Updated Virtaul Dom
+
+<div>
+  <div 1></div>
+  <div 2></div>
+  <div 3></div> 
+</div>
+
+So its try out the difference between old and new one
+what will be the difference?
+only four nodes and then
+it calculate the difference
+and after automatically update
+the dom on very render cycle
+
+# Monolith Architecture and Microservices Architecture
+
+Monolith - In one single page
+-Api
+-UI
+-Authentication
+-DataBase
+-SMS Notification
+
+Microservices - Sepration of Concerns
+-Backend
+-UI
+-Authentication
+-DataBase
+-SMS Notification
+-Email Notification
