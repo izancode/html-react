@@ -136,7 +136,9 @@ import {Component/variable} from "path";
 -useState()
 Superpowerful State Varibles in react
 Whenever a state varible update react re-render my component
--useEffect()
+-useEffect() -
+
+when the jsx html in function render after this useEffect were called
 
 # React Works Behind the scence by using
 
@@ -202,3 +204,17 @@ Microservices - Sepration of Concerns
 -DataBase
 -SMS Notification
 -Email Notification
+
+# Two Approches to fetch data from backend or api
+
+# Two Types of Routing in Web Apps
+
+-Client Side Routing <Link to="Just Change Component Single page Application"><Link/>
+-Server Side Routing <a href="refresh Whole Page"></a>
+
+
+# Ayyappan Pure Veg
+https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0738955&lng=72.886596&restaurantId=555803&catalog_qa=undefined&submitAction=ENTER
+
+# Bhatt Vishranti Gruh
+https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0738955&lng=72.886596&restaurantId=519308&catalog_qa=undefined&submitAction=ENTER

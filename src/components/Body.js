@@ -1,84 +1,84 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
-  /*
-  
-  State Varible - super powerfull varible
-  const [listOfRestaurant] = useState();
-  Normal JS Varible
-  let listOfRestaurant=[];
-  
-  */
-  //Normal JS Varible
+  //Whenever state varibles update, react triggers a reconsiliation cycle (re-render the component)
+  const [listOfRestaurants, setListOfRestaurant] = useState([]);
+  const [searchFilter, setSearchFilter] = useState([]);
 
-  const [listOfRestaurants, setListOfRestaurant] = useState( );
-  /*  
-  
+  const [searchResult, setSearchResult] = useState("");
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const arr = useState(resList);
-  const [listOfRestaurants, setListOfRestaurant] = arr;
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0738955&lng=72.886596&page_type=DESKTOP_WEB_LISTING"
+    );
 
-  const arr = useState(resList);
-  const listOfRestaurants = arr[0];
-  const setListOfRestaurant = arr[1];
-
-*/
-
-  // let listOfRestaurantJS = [
-  //   {
-  //     info: {
-  //       id: "112487",
-  //       name: "Chinese Wok",
-  //       cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
-  //       costForTwo: "₹250 for two",
-  //       cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
-  //       avgRating: 3.2,
-  //       deliveryTime: 36,
-  //     },
-  //   },
-  //   {
-  //     info: {
-  //       id: "112557",
-  //       name: "Chinese Wok",
-  //       cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
-  //       costForTwo: "₹250 for two",
-  //       cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
-  //       avgRating: 4.2,
-  //       deliveryTime: 36,
-  //     },
-  //   },
-  //   {
-  //     info: {
-  //       id: "1123457",
-  //       name: "albaik",
-  //       cloudinaryImageId: "e0839ff574213e6f35b3899ebf1fc597",
-  //       costForTwo: "₹250 for two",
-  //       cuisines: ["Chinese", "Asian", "Tibetan", "Desserts"],
-  //       avgRating: 4.1,
-  //       deliveryTime: 36,
-  //     },
-  //   },
-  // ];
-  return (
+    const json = await data.json();
+    console.log(json.data.cards[4].card.card.gridElements.infoWithStyle);
+    setListOfRestaurant(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setSearchFilter(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+  /*Conditional Rendering
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }*/
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchResult}
+            onChange={(e) => {
+              setSearchResult(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              //Filter the restauant card and update the ui
+              //SearcgText
+              // console.log(searchResult);
+
+              const filterRestaurant = listOfRestaurants.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchResult.toLowerCase());
+              });
+              // console.log(filterRestaurant);
+              setSearchFilter(filterRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRestaurants.filter((res) => {
+            const filteredList = searchFilter.filter((res) => {
               return res.info.avgRating > 4;
             });
-            setListOfRestaurant(filteredList);
-            // console.log(listOfRestaurants);
+            setSearchFilter(filteredList);
           }}
         >
           Top Rated Restaurant
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((list) => (
-          <RestaurantCard key={list.info.id} resData={list} />
+        {searchFilter.map((list) => (
+          <Link key={list.info.id} to={"restaurant/" + list.info.id}>
+            <RestaurantCard resData={list.info} />
+          </Link>
         ))}
       </div>
     </div>
