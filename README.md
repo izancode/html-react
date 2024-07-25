@@ -212,9 +212,23 @@ Microservices - Sepration of Concerns
 -Client Side Routing <Link to="Just Change Component Single page Application"><Link/>
 -Server Side Routing <a href="refresh Whole Page"></a>
 
-
 # Ayyappan Pure Veg
+
 https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0738955&lng=72.886596&restaurantId=555803&catalog_qa=undefined&submitAction=ENTER
 
 # Bhatt Vishranti Gruh
+
 https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0738955&lng=72.886596&restaurantId=519308&catalog_qa=undefined&submitAction=ENTER
+
+# Component Lifecycle - Mounted
+
+Loading - Mounting the component on the web page
+
+In class Based Component except constructor() and render() there is also a componentDidMount() method
+1.constructor()
+2.render()
+3.componentDidMount()
+
+In function based component there is useeffect as same as that functionality we have componentDidMount() in class based
+function based - useeffect(()=>{},[])
+class based - componentDidMount()
