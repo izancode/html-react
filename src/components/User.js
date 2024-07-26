@@ -4,8 +4,17 @@ const User = ({ name }) => {
   const [count, setCount] = useState(0);
   const [count2, setCount2] = useState(1);
   useEffect(() => {
-    //Api Calls
+    const timer = setInterval(() => {
+      console.log("izan code updated");
+    }, 1000);
+    //this return when ur unmounting
+    console.log("use effect render mounting");
+    return () => {
+      clearInterval(timer);
+      console.log("use effect render unmounting");
+    };
   }, []);
+  console.log("render");
 
   return (
     <div className="user-card">

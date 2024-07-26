@@ -4,34 +4,37 @@ class UserClass extends React.Component {
     super(props);
     /* console.log(props);*/
     this.state = {
-      count: 0,
-      count2: 1,
+      userInfo: {
+        name: "Dumy Name",
+        location: "default location",
+        avatar_url:
+          "https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg",
+      },
     };
     console.log(this.props.name + " Child Construtor");
   }
-  componentDidMount() {
-    console.log(this.props.name + " Child component Did Mount");
-    //Api Call
+  async componentDidMount() {
+    console.log("Parents component Did Mount");
+    const data = await fetch("https://api.github.com/users/izancode");
+    const json = await data.json();
+    console.log(json);
+    this.setState({
+      userInfo: json,
+    });
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+  componentWillUnmount() {
+    console.log("component Will Unmount");
   }
   render() {
-    const { name, location } = this.props;
-    const { count, count2 } = this.state;
-    console.log(this.props.name + " Child Render");
+    const { name, location, avatar_url } = this.state.userInfo;
+
     return (
       <div className="user-card">
-        <h1>Count = {count}</h1>
-        <button
-          onClick={() => {
-            //NEVER UPDATE STATE VARIABLES DIRECTLY
-            this.setState({
-              count: this.state.count + 1,
-              count2: this.state.count2 + 1,
-            });
-          }}
-        >
-          Count Increase
-        </button>
-        <h1>Count2 = {count2}</h1>
+        <img src={avatar_url} alt="" />
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h4>Contact: @izancode</h4>
@@ -41,3 +44,20 @@ class UserClass extends React.Component {
 }
 
 export default UserClass;
+/*
+--Mounting LifeCycle--
+Constructor
+Render 
+  HTML Render
+Componentdidmount
+  Api Call
+  setstate - state varrable is updated
+--Update
+
+render(Api data)  
+  Html loaded with new api data
+Componentdidupdated
+
+
+
+*/

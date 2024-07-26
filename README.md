@@ -1,4 +1,4 @@
-# This Food Delivery App - part 3 Branch Here Only
+# This food-delivery-app-class-5 Branch Here Only
 
 # Javascript Code
 
@@ -228,7 +228,12 @@ In class Based Component except constructor() and render() there is also a compo
 1.constructor()
 2.render()
 3.componentDidMount()
+4.componentDidUpdate()
+5.componentWillMount()
 
 In function based component there is useeffect as same as that functionality we have componentDidMount() in class based
 function based - useeffect(()=>{},[])
-class based - componentDidMount()
+class based - componentDidMount(),componentDidUpdate()
+
+function Based - return () => {console.log("use effect render unmounting");};
+class based - componentWillUnmount()
