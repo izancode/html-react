@@ -1,4 +1,4 @@
-# This food-delivery-app-class-5 Branch Here Only
+# This food-delivery-app-opti-6 Branch Here Only
 
 # Javascript Code
 
@@ -237,3 +237,6 @@ class based - componentDidMount(),componentDidUpdate()
 
 function Based - return () => {console.log("use effect render unmounting");};
 class based - componentWillUnmount()
+
+# Single Resposibility Principal
+

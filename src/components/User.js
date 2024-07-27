@@ -4,13 +4,14 @@ const User = ({ name }) => {
   const [count, setCount] = useState(0);
   const [count2, setCount2] = useState(1);
   useEffect(() => {
-    const timer = setInterval(() => {
+    /*  const timer = setInterval(() => {
       console.log("izan code updated");
-    }, 1000);
+    }, 1000);*/
+
     //this return when ur unmounting
     console.log("use effect render mounting");
     return () => {
-      clearInterval(timer);
+      // clearInterval(timer);
       console.log("use effect render unmounting");
     };
   }, []);

@@ -7,8 +7,30 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import BodyTwo from "./components/BodyTwo";
+import useOnlineStatus from "./utils/useOnlineStatus";
+/*
 
+Chunking
+Code Splitting
+Dynamic Bundling
+
+
+*/
 const AppLayoutComponets = () => {
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return (
+      <div>
+        <Header />
+        <h1>
+          Looks Like you're offline!! Please check your internet connection
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <Header />
@@ -37,6 +59,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/bodytwo",
+        element: <BodyTwo />,
       },
     ],
     errorElement: <Error />,

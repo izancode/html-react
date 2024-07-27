@@ -2,8 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
-  //Whenever state varibles update, react triggers a reconsiliation cycle (re-render the component)
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [searchFilter, setSearchFilter] = useState([]);
 
@@ -26,10 +26,12 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  /*Conditional Rendering
-  if (listOfRestaurants.length === 0) {
-    return <Shimmer />;
-  }*/
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return (
+      <h1>Looks Like you're offline!! Please check your internet connection</h1>
+    );
+  }
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -46,16 +48,12 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              //Filter the restauant card and update the ui
-              //SearcgText
-              // console.log(searchResult);
-
               const filterRestaurant = listOfRestaurants.filter((res) => {
                 return res.info.name
                   .toLowerCase()
                   .includes(searchResult.toLowerCase());
               });
-              // console.log(filterRestaurant);
+
               setSearchFilter(filterRestaurant);
             }}
           >
