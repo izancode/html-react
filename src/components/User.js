@@ -9,13 +9,13 @@ const User = ({ name }) => {
     }, 1000);*/
 
     //this return when ur unmounting
-    console.log("use effect render mounting");
+    // console.log("use effect render mounting");
     return () => {
       // clearInterval(timer);
-      console.log("use effect render unmounting");
+      // console.log("use effect render unmounting");
     };
   }, []);
-  console.log("render");
+  // console.log("render");
 
   return (
     <div className="user-card">

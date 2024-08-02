@@ -240,3 +240,20 @@ class based - componentWillUnmount()
 
 # Single Resposibility Principal
 
+# High Order Components
+
+High Order Components is function that takes a component and returns a component that can be used to render multiple components together.
+
+# props Drilling
+
+Props drilling happens when you pass data from a parent component to a deeply nested child component through several layers of intermediary components. This can become complicated if there are many levels of nesting.
+
+# Redux - Redux ToolKit
+
+  -Install npm i @reduxjs/toolkit and react-redux 
+  -Build our store
+  -Connect our store to our app
+  -Slice (cartSlice)
+  -dispatch(action)
+  -Selector
+

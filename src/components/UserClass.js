@@ -11,23 +11,23 @@ class UserClass extends React.Component {
           "https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg",
       },
     };
-    console.log(this.props.name + " Child Construtor");
+    // console.log(this.props.name + " Child Construtor");
   }
   async componentDidMount() {
-    console.log("Parents component Did Mount");
+    // console.log("Parents component Did Mount");
     const data = await fetch("https://api.github.com/users/izancode");
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     this.setState({
       userInfo: json,
     });
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate");
+    // console.log("componentDidUpdate");
   }
   componentWillUnmount() {
-    console.log("component Will Unmount");
+    // console.log("component Will Unmount");
   }
   render() {
     const { name, location, avatar_url } = this.state.userInfo;
